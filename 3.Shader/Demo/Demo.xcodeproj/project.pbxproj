@@ -31,6 +31,8 @@
 		E79C522E2020700A0087463B /* TestSh.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = TestSh.sh; sourceTree = "<group>"; };
 		E79C522F2020726D0087463B /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		E79C523020218D3C0087463B /* 1.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = 1.sh; sourceTree = "<group>"; };
+		E79C52312021B17C0087463B /* 3.3.shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 3.3.shader.vs; sourceTree = "<group>"; };
+		E79C52322021B1910087463B /* 3.3.shader.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 3.3.shader.fs; sourceTree = "<group>"; };
 		E7DDE696201B1A1D00DD9131 /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DDE699201B1A1D00DD9131 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E7DDE6C2201B21A900DD9131 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -74,6 +76,8 @@
 				E7DDE699201B1A1D00DD9131 /* main.cpp */,
 				E79C522D20206DDE0087463B /* Shader.h */,
 				E79C522E2020700A0087463B /* TestSh.sh */,
+				E79C52312021B17C0087463B /* 3.3.shader.vs */,
+				E79C52322021B1910087463B /* 3.3.shader.fs */,
 				E79C523020218D3C0087463B /* 1.sh */,
 			);
 			path = Demo;
