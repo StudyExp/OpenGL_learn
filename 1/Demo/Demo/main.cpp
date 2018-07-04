@@ -15,8 +15,10 @@ int main()
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
+    // 我们想要试用的版本是3.3
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    // 我们不想要就版本的opengl
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
 #ifdef __APPLE__
