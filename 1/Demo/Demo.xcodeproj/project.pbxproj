@@ -261,7 +261,7 @@
 				HEADER_SEARCH_PATHS = "$(glfw_header)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/glfw/3.2.1/lib,
+					/usr/local/opt/glfw/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -275,7 +275,7 @@
 				HEADER_SEARCH_PATHS = "$(glfw_header)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/glfw/3.2.1/lib,
+					/usr/local/opt/glfw/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
