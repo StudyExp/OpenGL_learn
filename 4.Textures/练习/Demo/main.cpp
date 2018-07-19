@@ -47,19 +47,20 @@ int main()
     
     // build and compile our shader program
     
-//    std::cout << $(SRCROOT) << std::endl;
-    
     // ------------------------------------
-    Shader ourShader("$(SRCROOT)/Demo/3.3.shader.vs", "$(SRCROOT)/Demo/3.3.shader.fs");
+    Shader ourShader("/Users/cyrill/GitHub/OpenGL_learn/4.Textures/练习/Demo/3.3.shader.vs", "/Users/cyrill/GitHub/OpenGL_learn/4.Textures/练习/Demo/3.3.shader.fs");
     
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
         // positions         // colors
-        0.5f, 0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // bottom right
-        0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom left
-        -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f ,  // top
-        -0.5f, 0.5f, 0.0f,  0.0f, 0.0f, 0.0f  // 左上角
+        0.5f, 0.5f, 0.0f,  1.0f, 0.0f, 0.0f,
+        0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,
+        -0.5f, 0.5f, 0.0f,  0.0f, 0.0f, 1.0f ,
+        
+        -0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,
+        -0.5f, 0.5f, 0.0f,  0.0f, 1.0f, 0.0f,
+        0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f ,
     };
     
     unsigned int indices[] = { // 注意索引从0开始!
@@ -146,9 +147,9 @@ int main()
         // 填充 GL_FILL
         // 线框模式 GL_LINE
         // 第一个参数表示我们打算将其应用到所有的三角形的正面和背面，第二个参数告诉我们用线来绘制。之后的绘制调用会一直以线框模式绘制三角形，直到我们用glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)将其设置回默认模式。
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-//        glDrawArrays(GL_TRIANGLES, 0, 3);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+//        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+//        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         
         // 第一个参数指定了我们绘制的模式，这个和glDrawArrays的一样。第二个参数是我们打算绘制顶点的个数，这里填6，也就是说我们一共需要绘制6个顶点。第三个参数是索引的类型，这里是GL_UNSIGNED_INT。最后一个参数里我们可以指定EBO中的偏移量（或者传递一个索引数组，但是这是当你不在使用索引缓冲对象的时候），但是我们会在这里填写0。
         
