@@ -9,11 +9,12 @@
 #ifndef Shader_h
 #define Shader_h
 
-#include "glad.h"
+#include <glad/glad.h>
 
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <math.h>
 #include <iostream>
 
 class Shader {
@@ -69,6 +70,7 @@ public:
         glCompileShader(fragment);
         checkCompileErrors(fragment, "FRAGMENT");
         
+        
         // 着色器程序
         ID = glCreateProgram();
         glAttachShader(ID, vertex);
@@ -83,6 +85,11 @@ public:
     // 使用/激活程序
     void use() {
         glUseProgram(ID);
+        
+        float timeValue = glfwGetTime();
+        float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+        int vertexColorLocation = glGetUniformLocation(ID, "ourColor");
+        glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
     };
     // uniform工具函数
     void setBool(const std::string &name, bool value) const

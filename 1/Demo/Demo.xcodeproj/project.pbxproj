@@ -30,8 +30,6 @@
 		E7DDE699201B1A1D00DD9131 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E7DDE6C2201B21A900DD9131 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E7DDE6C6201B265900DD9131 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
-		E7DDE6CD201B2C4100DD9131 /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
-		E7DDE6CE201B2C4100DD9131 /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
 		E7DDE6CF201B2C4200DD9131 /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,8 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				E7DDE6C6201B265900DD9131 /* libglfw.3.2.dylib */,
-				E7DDE6CE201B2C4100DD9131 /* glad.h */,
-				E7DDE6CD201B2C4100DD9131 /* khrplatform.h */,
 				E7DDE6CF201B2C4200DD9131 /* glad.c */,
 				E7DDE6C2201B21A900DD9131 /* OpenGL.framework */,
 			);

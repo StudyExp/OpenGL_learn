@@ -26,8 +26,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E70EA12020F34E1000BAAC0A /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
-		E70EA12120F34E1000BAAC0A /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
 		E7252C50201EB2670023AF12 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		E79C522D20206DDE0087463B /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		E79C522E2020700A0087463B /* TestSh.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = TestSh.sh; sourceTree = "<group>"; };
@@ -90,8 +88,6 @@
 		E7DDE6A0201B1AAB00DD9131 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E70EA12120F34E1000BAAC0A /* glad.h */,
-				E70EA12020F34E1000BAAC0A /* khrplatform.h */,
 				E7252C50201EB2670023AF12 /* glad.c */,
 				E7DDE6C6201B265900DD9131 /* libglfw.3.2.dylib */,
 				E7DDE6C2201B21A900DD9131 /* OpenGL.framework */,
