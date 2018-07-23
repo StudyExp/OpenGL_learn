@@ -5,6 +5,7 @@
 #include "shader1.h"
 #include "stb_image.h"
 #include <iostream>
+#include <FreeImage.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -132,6 +133,7 @@ int main()
         std::cout << "Failed to load texture" << std::endl;
     }
     stbi_image_free(data);
+    
     
     
     // texture 2
