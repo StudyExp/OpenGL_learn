@@ -108,14 +108,55 @@ int main()
     // load and create a texture
     // -------------------------
     // 纹理
-    unsigned int texture1, texture2;
+    GLuint texture1, texture2;
     // texture 1
     // ---------
     glGenTextures(1, &texture1);
     glBindTexture(GL_TEXTURE_2D, texture1);
+    
+    /*
+     纹理坐标的范围通常是从(0, 0)到(1, 1)，那如果我们把纹理坐标设置在范围之外会发生什么？OpenGL默认的行为是重复这个纹理图像（我们基本上忽略浮点纹理坐标的整数部分），但OpenGL提供了更多的选择：
+     
+     环绕方式    描述
+     GL_REPEAT    对纹理的默认行为。重复纹理图像。
+     GL_MIRRORED_REPEAT    和GL_REPEAT一样，但每次重复图片是镜像放置的。
+     GL_CLAMP_TO_EDGE    纹理坐标会被约束在0到1之间，超出的部分会重复纹理坐标的边缘，产生一种边缘被拉伸的效果。
+     GL_CLAMP_TO_BORDER    超出的坐标为用户指定的边缘颜色。
+     */
+    
+    /*
+     s, t, r 等价于。x，y，z
+     */
+    
+    
+    /*
+     第一个参数指定了纹理目标；我们使用的是2D纹理，因此纹理目标是GL_TEXTURE_2D。
+     第二个参需要我们指定设置的选项与应用的纹理轴。我们打算配置的是WRAP。
+     最后一个参数需要我们传递一个环绕方式Wrapping，这里是GL_MIRRORED_REPEAT，如果我们选择GL_CLAMP_TO_BORDER选项，我们还需要制定一个边缘的颜色。这需要使用glTexParameter函数的fv后嘴形式，用GL_TEXTURE_BORDER_COLOR作为他的选项，并且传递一个flaot数组作为边缘的颜色
+     `
+     float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
+     glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+     `
+     */
     // set the texture wrapping parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);    // set texture wrapping to GL_REPEAT (default wrapping method)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    
+    
+    // 纹理过滤
+    /*
+     纹理过滤不依赖于分辨率，它可以是任意的浮点值，所以opengl需要知道如何将纹理像素映射到纹理坐标。当你有一个很大的物体但是纹理的分辨率很低的时候这就变得很重要了。
+     
+     纹理过滤有很多个选项，但是现在我们只讨论最重要的两种：GL_NEAREST和GL_LINEAR。
+     
+     Texture Pixel也叫Texel，你可以想象你打开一张.jpg格式图片，不断放大你会发现它是由无数像素点组成的，这个点就是纹理像素；注意不要和纹理坐标搞混，纹理坐标是你给模型顶点设置的那个数组，OpenGL以这个顶点的纹理坐标数据去查找纹理图像上的像素，然后进行采样提取纹理像素的颜色。
+     
+     GL_NEAREST（也叫邻近过滤，Nearest Neighbor Filtering）是OpenGL默认的纹理过滤方式。当设置为GL_NEAREST的时候，OpenGL会选择中心点最接近纹理坐标的那个像素。下图中你可以看到四个像素，加号代表纹理坐标。
+     
+     GL_LINEAR（也叫线性过滤，(Bi)linear Filtering）它会基于纹理坐标附近的纹理像素，计算出一个插值，近似出这些纹理像素之间的颜色。一个纹理像素的中心距离纹理坐标越近，那么这个纹理像素的颜色对最终的样本颜色的贡献越大。
+     GL_NEAREST产生了颗粒状的图案，我们能够清晰看到组成纹理的像素，而GL_LINEAR能够产生更平滑的图案，很难看出单个的纹理像素。GL_LINEAR可以产生更真实的输出，但有些开发者更喜欢8-bit风格，所以他们会用GL_NEAREST选项。
+     当进行放大(Magnify)和缩小(Minify)操作的时候可以设置纹理过滤的选项，比如你可以在纹理被缩小的时候使用邻近过滤，被放大时使用线性过滤。我们需要使用glTexParameter*函数为放大和缩小指定过滤方式。
+     */
     // set texture filtering parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -123,9 +164,23 @@ int main()
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
     // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
+    // 这个函数首先接受一个图像文件的位置作为输入。接下来它需要三个int作为它的第二、第三和第四个参数，stb_image.h将会用图像的宽度、高度和颜色通道的个数填充这三个变量。我们之后生成纹理的时候会用到的图像的宽度和高度的。
     unsigned char *data = stbi_load("Demo/container.jpg", &width, &height, &nrChannels, 0);
     if (data)
     {
+        /*
+          1.参数指定纹理目标（环境）；设置为GL_TEXTURE_2D意味着会生成与当前绑定的纹理对象在同一目标target上的纹理 （任何绑定到GL_TEXTURE_1D和GL_TEXTURE_3D的纹理不会受到影响）
+         2.第二个参数为纹理指定多级渐远纹理的级别，如果你希望单独手动设置每个多级渐远纹理的级别的话。这里我们填0，也就是基本级别
+         3.第三个参数告诉OpenGL我们希望把纹理储存为何种格式。RGB。 RGBA。
+         4.第四个和第五个参数设置最终的纹理的宽度和高度。我们之前加载图像的时候储存了他们。所以设置就好了
+         5.下个参数应该总是被设为0（历史遗留问题）
+         6.第七个和第八个参数定义了源图的格式和类型。jpg。RGB。  png，RGBA。，并把它们储存为char(byte)数组，我们将会传入对应值。(译注:注意本参数和第三个参数RGB不仅代表RGB三元素,而且代表着三元素排列顺序;根据图像本身的顺序或操作系统的顺序或加载器的将bitmap图像对顺序排列的不同而不同;例如如果你用SOIL加载BMP格式图像此参数应该是GL_BGR;再如如果在Windows和Linux下,使用FreeImage的时候BITMAP所有排列都是BGR[A]而在Mac OS X和Unix下则是RGB[A],所以如果你加载一个图像发现颜色不对就需要修改这个参数,如果不考虑只有一个元素的灰阶BITMAP,三[四]个颜色元素排列只有两种:RGB[A]或BGR[A],BGR叫做Little Endian,RGB叫做Big Endian,搜索此内容可以获得更多知识)。
+         7.最后一个参数是真正的图像数据。
+         
+         当调用glTexImage2D时，当前绑定的纹理对象就会被附加上纹理图像。然而，目前只有基本级别(Base-level)的纹理图像被加载了，如果要使用多级渐远纹理，我们必须手动设置所有不同的图像（不断递增第二个参数）。或者，直接在生成纹理之后调用glGenerateMipmap。这会为当前绑定的纹理自动生成所有需要的多级渐远纹理。
+         
+         生成了纹理和相应的多级渐远纹理后，释放图像的内存是一个很好的习惯。
+         */
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
