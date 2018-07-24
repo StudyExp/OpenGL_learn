@@ -7,6 +7,10 @@
 #include <iostream>
 #include <FreeImage.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
@@ -228,6 +232,8 @@ int main()
     // -------------------------------------------------------------------
 
     
+   
+    
     
     // render loop
     // -----------
@@ -250,6 +256,13 @@ int main()
         
         // render the triangle
         ourShader.use();
+        
+        // create transformations
+        glm::mat4 transform = glm::mat4(1.0f);
+        transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+        transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
         
 //        float timeValue = glfwGetTime();
 //        float offset = sin(timeValue);
