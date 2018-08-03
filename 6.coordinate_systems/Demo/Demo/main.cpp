@@ -52,11 +52,13 @@ int main()
     
     // configure global opengl state
     // -----------------------------
+    // 开启深度测试
     glEnable(GL_DEPTH_TEST);
     
     // build and compile our shader program
     // ------------------------------------
     Shader ourShader("Demo/4.2.texture.vs", "Demo/4.2.texture.fs");
+    
     
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
