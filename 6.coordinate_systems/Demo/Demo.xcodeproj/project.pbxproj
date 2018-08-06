@@ -10,7 +10,7 @@
 		E7252C51201EB2670023AF12 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = E7252C50201EB2670023AF12 /* glad.c */; };
 		E726ECE621008E8C008D137B /* stb_imag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E726ECDB21008E8B008D137B /* stb_imag.cpp */; };
 		E726ECE921008FD5008D137B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E726ECE521008E8C008D137B /* main.cpp */; };
-		E726ED0B210568FB008D137B /* libfreeimage.3.17.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E726ED0A210568FB008D137B /* libfreeimage.3.17.0.dylib */; };
+		E728495F2117F00D00BF8C33 /* libfreeimage.3.18.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E728495E2117F00D00BF8C33 /* libfreeimage.3.18.0.dylib */; };
 		E7DDE6C3201B21A900DD9131 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DDE6C2201B21A900DD9131 /* OpenGL.framework */; };
 		E7DDE6C7201B265900DD9131 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DDE6C6201B265900DD9131 /* libglfw.3.2.dylib */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,7 @@
 		E726ECE421008E8C008D137B /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		E726ECE521008E8C008D137B /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E726ECE821008E96008D137B /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
-		E726ED0A210568FB008D137B /* libfreeimage.3.17.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreeimage.3.17.0.dylib; path = ../../../../../../usr/local/Cellar/freeimage/3.17.0_1/lib/libfreeimage.3.17.0.dylib; sourceTree = "<group>"; };
+		E728495E2117F00D00BF8C33 /* libfreeimage.3.18.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreeimage.3.18.0.dylib; path = ../../../../../../usr/local/Cellar/freeimage/3.18.0/lib/libfreeimage.3.18.0.dylib; sourceTree = "<group>"; };
 		E7DDE696201B1A1D00DD9131 /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DDE6C2201B21A900DD9131 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E7DDE6C6201B265900DD9131 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E726ED0B210568FB008D137B /* libfreeimage.3.17.0.dylib in Frameworks */,
+				E728495F2117F00D00BF8C33 /* libfreeimage.3.18.0.dylib in Frameworks */,
 				E7DDE6C7201B265900DD9131 /* libglfw.3.2.dylib in Frameworks */,
 				E7DDE6C3201B21A900DD9131 /* OpenGL.framework in Frameworks */,
 			);
@@ -97,7 +97,7 @@
 		E7DDE6A0201B1AAB00DD9131 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E726ED0A210568FB008D137B /* libfreeimage.3.17.0.dylib */,
+				E728495E2117F00D00BF8C33 /* libfreeimage.3.18.0.dylib */,
 				E7252C50201EB2670023AF12 /* glad.c */,
 				E726ECE821008E96008D137B /* stb_image.h */,
 				E7DDE6C6201B265900DD9131 /* libglfw.3.2.dylib */,
@@ -285,7 +285,8 @@
 					"$(inherited)",
 					/usr/local/opt/glfw/lib,
 					/usr/local/opt/freeimage/lib,
-					/usr/local/Cellar/freeimage/3.17.0_1/lib,
+					/usr/local/opt/freeimage/lib,
+					/usr/local/Cellar/freeimage/3.18.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -301,7 +302,8 @@
 					"$(inherited)",
 					/usr/local/opt/glfw/lib,
 					/usr/local/opt/freeimage/lib,
-					/usr/local/Cellar/freeimage/3.17.0_1/lib,
+					/usr/local/opt/freeimage/lib,
+					/usr/local/Cellar/freeimage/3.18.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
