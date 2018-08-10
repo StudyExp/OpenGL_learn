@@ -83,7 +83,10 @@ public:
         glCompileShader(fragment);
         checkCompileErrors(fragment, "FRAGMENT");
         // if geometry shader is given, compile geometry shader
-        unsigned int geometry;
+        
+        
+        GLuint geometry = 0;
+        
         if(geometryPath != nullptr)
         {
             const char * gShaderCode = geometryCode.c_str();
@@ -97,8 +100,9 @@ public:
         glAttachShader(ID, vertex);
         glAttachShader(ID, fragment);
         if(geometryPath != nullptr)
+        {
             glAttachShader(ID, geometry);
-        
+        }
         glLinkProgram(ID);
         checkCompileErrors(ID, "PROGRAM");
         // delete the shaders as they're linked into our program now and no longer necessery
